@@ -2,46 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cybersecurity | Zaur Huseynov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
+    <!-- Fonts: 'Space Grotesk' is used as the main font. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #050505;
+            --bg-color: #000000;
             --text-color: #e0e0e0;
-            --chrome-gradient: linear-gradient(180deg, #fff 0%, #aaa 40%, #444 50%, #aaa 60%, #fff 100%);
+            --chrome-gradient: linear-gradient(180deg, #fff 0%, #888 40%, #222 50%, #888 60%, #fff 100%);
+            --liquid-color: #silver;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Space Grotesk', sans-serif; /* Switched to main font */
             overflow-x: hidden;
             margin: 0;
-            /* Hide default cursor only on non-touch devices via JS or Media Query usually, 
-               but kept as requested. */
-            cursor: none; 
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Show default cursor on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            body { cursor: auto; }
-            #cursor { display: none !important; }
+            cursor: none; /* Custom cursor */
         }
         
-        h1, h2, h3, .font-brand, .font-chrome {
-            font-family: 'Orbitron', sans-serif;
+        /* SOLUTION: Orbitron is used for all headers. */
+        h1, h2, h3 {
+            font-family: 'Orbitron', 'Space Grotesk', sans-serif; 
+            text-transform: uppercase;
+        }
+        
+        /* Orbitron is used for the 'font-chrome' class, abandoning Syncopate. */
+        .font-chrome {
+            font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+        }
+        
+        /* --- NEW BRAND FONT (Orbitron) --- */
+        .font-brand {
+            font-family: 'Orbitron', 'Space Grotesk', sans-serif;
             text-transform: uppercase;
         }
 
-        /* --- LIQUID BACKGROUND --- */
+        /* --- LIQUID METAL BACKGROUND --- */
         .liquid-bg {
             position: fixed;
             top: 0;
@@ -58,14 +63,14 @@
             position: absolute;
             background: radial-gradient(circle, rgba(200,200,200,0.15) 0%, rgba(50,50,50,0.05) 50%, transparent 70%);
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            filter: blur(60px);
+            filter: blur(40px);
             animation: morph 15s infinite alternate linear;
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
-        .blob-1 { top: -10%; left: -10%; width: 80vw; height: 80vw; animation-duration: 20s; }
-        .blob-2 { bottom: -10%; right: -10%; width: 70vw; height: 70vw; animation-duration: 25s; animation-direction: reverse; }
-        .blob-3 { top: 40%; left: 30%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); animation-duration: 18s; }
+        .blob-1 { top: -20%; left: -10%; width: 70vw; height: 70vw; animation-duration: 20s; }
+        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; animation-duration: 25s; animation-direction: reverse; }
+        .blob-3 { top: 40%; left: 30%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); animation-duration: 18s; }
 
         @keyframes morph {
             0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
@@ -79,8 +84,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0px 0px 15px rgba(255,255,255,0.3);
-            animation: shine 8s linear infinite;
+            text-shadow: 0px 2px 10px rgba(255,255,255,0.2);
+            animation: shine 6s linear infinite;
         }
 
         @keyframes shine {
@@ -94,28 +99,28 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 16px;
-            height: 16px;
-            border: 1px solid rgba(255,255,255,0.8);
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(255,255,255,0.5);
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             pointer-events: none;
             z-index: 100;
             transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
             mix-blend-mode: difference;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(2px);
         }
 
         body.hovering #cursor {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.9);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.8);
             mix-blend-mode: normal;
             border-color: transparent;
         }
 
-        /* --- CANVAS --- */
+        /* --- CANVAS (MOLTEN SILVER) --- */
         #canvas {
             position: fixed;
             top: 0;
@@ -126,7 +131,6 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.5s ease;
-            touch-action: none; /* Prevents scrolling while drawing */
         }
         
         body.drawing-mode #canvas {
@@ -137,36 +141,34 @@
 
         /* --- GLASS CARDS --- */
         .card-metal {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.005) 100%);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
         }
 
         .card-metal:hover {
-            border-color: rgba(255,255,255,0.3);
-            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%);
+            border-color: rgba(255,255,255,0.4);
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px -10px rgba(255,255,255,0.15);
+            box-shadow: 0 10px 30px -10px rgba(255,255,255,0.1);
         }
 
-        /* --- SCROLL REVEAL --- */
+        /* --- SCROLL ANIMATION --- */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
         }
 
         /* --- NAVIGATION --- */
         .nav-item {
             position: relative;
-            color: #666;
+            color: #888;
             transition: color 0.3s;
         }
         .nav-item::before {
@@ -187,24 +189,56 @@
             width: 10px;
         }
         
-        /* --- VISUALIZER --- */
+        /* --- LANGUAGE SWITCHER --- */
+        .lang-switcher {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px;
+            border-radius: 9999px;
+            display: flex;
+            gap: 4px;
+        }
+        .lang-btn {
+            color: #888;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 9999px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .lang-btn.active {
+            color: black;
+            background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        .lang-btn:hover:not(.active) {
+            color: white;
+        }
+
+
+        /* --- AUDIO VISUALIZER BARS --- */
         .bar {
             width: 3px;
             background: #fff;
             border-radius: 2px;
             animation: equalize 1s infinite alternate;
-            box-shadow: 0 0 8px rgba(255,255,255,0.6);
+            box-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
         .bar:nth-child(1) { height: 60%; animation-delay: -0.2s; }
         .bar:nth-child(2) { height: 30%; animation-delay: -0.4s; }
         .bar:nth-child(3) { height: 70%; animation-delay: -0.6s; }
         .bar:nth-child(4) { height: 40%; animation-delay: -0.8s; }
 
-        .playing .bar { animation-play-state: running; }
-        .paused .bar { 
-            animation-play-state: paused; 
-            height: 20% !important; 
-            transition: height 0.3s; 
+        .playing .bar {
+            animation-play-state: running;
+        }
+        .paused .bar {
+            animation-play-state: paused;
+            height: 20% !important; /* Düz çizgiye dönsün */
+            transition: height 0.3s;
         }
 
         @keyframes equalize {
@@ -212,11 +246,6 @@
             100% { height: 100%; }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
     </style>
 </head>
 <body data-lang="en">
@@ -226,8 +255,8 @@
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
-        <!-- Noise Texture -->
-        <div class="absolute inset-0 opacity-[0.05] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E');"></div>
+        <!-- Grain -->
+        <div class="absolute inset-0 opacity-[0.07]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E');"></div>
     </div>
 
     <!-- CANVAS & CURSOR -->
@@ -235,20 +264,21 @@
     <div id="cursor"></div>
 
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 w-full px-6 py-6 md:px-12 md:py-8 z-40 flex justify-between items-start mix-blend-difference pointer-events-none">
-        <div class="pointer-events-auto hoverable flex flex-col group cursor-pointer">
-            <span class="font-brand text-xl md:text-2xl font-bold tracking-tighter text-white group-hover:text-gray-300 transition-colors">Cyberus</span>
-            <span id="nav-subtitle" class="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-gray-400 group-hover:text-white transition-colors" data-key="nav-subtitle">Penetration Tester</span>
+    <nav class="fixed top-0 w-full p-8 md:p-12 z-40 flex justify-between items-start mix-blend-difference pointer-events-none">
+        <div class="pointer-events-auto hoverable flex flex-col">
+            <!-- Brand Font applied here -->
+            <span class="font-brand text-2xl font-bold tracking-tighter text-white">Cyberus</span>
+            <span id="nav-subtitle" class="text-[10px] tracking-[0.3em] uppercase text-gray-400" data-key="nav-subtitle">Penetration Tester</span>
         </div>
         
         <div class="flex flex-col items-end gap-4 pointer-events-auto">
              <!-- LANGUAGE SWITCHER -->
-            <div id="lang-switcher" class="bg-black/40 backdrop-blur-md border border-white/10 p-1 rounded-full flex gap-1 shadow-lg">
-                <button class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all text-gray-500 hover:text-white hoverable" data-lang="ru">RU</button>
-                <button class="px-3 py-1 text-[10px] font-bold uppercase rounded-full transition-all text-gray-500 hover:text-white hoverable" data-lang="en">EN</button>
+            <div id="lang-switcher" class="lang-switcher hoverable">
+                <button class="lang-btn hoverable" data-lang="ru">RU</button>
+                <button class="lang-btn hoverable" data-lang="en">EN</button>
             </div>
 
-            <div class="hidden md:flex flex-col items-end gap-2 text-xs font-bold tracking-widest uppercase mt-4">
+            <div class="hidden md:flex flex-col items-end gap-2 text-xs font-bold tracking-widest uppercase">
                 <a href="#work" class="nav-item hoverable" data-key="nav-projects">Projects</a>
                 <a href="#certifications" class="nav-item hoverable" data-key="nav-certs">Certificates</a>
                 <a href="#contact" class="nav-item hoverable" data-key="nav-contact">Contact</a>
@@ -257,150 +287,161 @@
     </nav>
 
     <!-- MAIN CONTENT -->
-    <main class="relative z-10 px-6 pt-32 pb-20 md:px-20 md:pt-40 max-w-[1600px] mx-auto">
+    <main class="relative z-10 px-6 md:px-20 pt-40 pb-20 max-w-[1600px] mx-auto">
 
-        <!-- HERO SECTION -->
-        <section class="min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center">
+        <!-- HERO -->
+        <section class="min-h-[70vh] flex flex-col justify-center">
             <div class="reveal">
-                <h1 class="text-chrome font-chrome text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tighter mb-8 md:mb-12">
+                <h1 class="text-chrome font-chrome text-6xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter mb-8">
                     Zaur <br> Huseynov.
                 </h1>
-                
-                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-12">
-                    <p id="hero-text" class="max-w-xl text-base md:text-xl text-gray-400 font-light leading-relaxed border-l-2 border-white/20 pl-6" data-key="hero-text">
-                        <!-- Filled by JS -->
-                    </p>
-                </div>
+                <!-- JUST THE ICONIC QUOTE -->
+                <p id="hero-text" class="max-w-xl text-lg md:text-xl text-gray-400 font-light leading-relaxed border-l-2 border-white/20 pl-6" data-key="hero-text">
+                    <!-- Will be filled by JS -->
+                </p>
+                <!-- END OF HERO -->
             </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
-        <section id="work" class="py-16 md:py-24">
-            <div class="flex items-center justify-between mb-10 md:mb-16 reveal">
-                <span id="work-title" class="font-chrome text-lg md:text-xl text-white tracking-wide" data-key="work-title">DEPLOYED_SOLUTIONS</span>
-                <div class="h-[1px] bg-white/20 flex-grow mx-4 md:mx-8"></div>
-                <span class="text-xs text-gray-500 font-mono">01 — 02</span>
+        <!-- PROJECTS -->
+        <section id="work" class="py-20">
+            <!-- UPDATED PROJECT COUNTER (01 — 02) -->
+            <div class="flex items-center justify-between mb-16 reveal">
+                <span id="work-title" class="font-chrome text-xl text-white" data-key="work-title">DEPLOYED_SOLUTIONS</span>
+                <div class="h-[1px] bg-white/20 flex-grow mx-8"></div>
+                <span class="text-xs text-gray-500">01 — 02</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <!-- Project 1 -->
-                <a href="https://osinera.com" target="_blank" class="card-metal p-6 md:p-12 reveal hoverable group cursor-pointer block rounded-2xl md:rounded-3xl">
-                    <div class="flex justify-between items-start mb-8 md:mb-12">
-                        <span class="text-[10px] md:text-xs font-mono border border-white/20 px-2 py-1 rounded text-gray-400 group-hover:bg-white/10 transition-colors">2024</span>
-                        <svg class="w-5 h-5 md:w-6 md:h-6 text-gray-600 group-hover:text-white transition-colors transform group-hover:rotate-45 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                <!-- Project 1: Osinera (UPDATED) -->
+                <a href="https://osinera.com" target="_blank" class="card-metal p-8 md:p-12 reveal hoverable group cursor-pointer block">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="text-xs border border-white/20 px-2 py-1 rounded text-gray-400" data-key="year-2024">2024</span>
+                        <!-- External link icon to show it's a link -->
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </div>
-                    <h3 class="font-chrome text-2xl md:text-4xl text-white mb-3 md:mb-4 group-hover:text-chrome transition-all">Osinera</h3>
-                    <p id="proj1-desc" class="text-sm text-gray-400 leading-relaxed" data-key="proj1-desc">Co-founderi olduğum kiber təhlükəsizlik layihəsi.</p>
+                    <!-- Project name is hardcoded, but its description relies on JS -->
+                    <h3 class="font-chrome text-3xl md:text-4xl text-white mb-4 group-hover:text-chrome">Osinera</h3>
+                    <!-- Project description will be filled by JS -->
+                    <p id="proj1-desc" class="text-sm text-gray-400" data-key="proj1-desc">Co-founderi olduğum kiber təhlükəsizlik layihəsi.</p>
                 </a>
+                <!-- End of Project 1 -->
 
-                <!-- Project 2 -->
-                <a href="http://www.millisec.az/blog" target="_blank" class="card-metal p-6 md:p-12 reveal hoverable group cursor-pointer block rounded-2xl md:rounded-3xl" style="transition-delay: 0.1s">
-                    <div class="flex justify-between items-start mb-8 md:mb-12">
-                        <span class="text-[10px] md:text-xs font-mono border border-white/20 px-2 py-1 rounded text-gray-400 group-hover:bg-white/10 transition-colors">2024</span>
-                        <svg class="w-5 h-5 md:w-6 md:h-6 text-gray-600 group-hover:text-white transition-colors transform group-hover:rotate-45 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                <!-- Project 2: Blog Posts (NEW) -->
+                <a href="http://www.millisec.az/blog" target="_blank" class="card-metal p-8 md:p-12 reveal hoverable group cursor-pointer block" style="transition-delay: 0.1s">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="text-xs border border-white/20 px-2 py-1 rounded text-gray-400" data-key="year-2024">2024</span>
+                        <!-- External link icon -->
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </div>
-                    <h3 id="proj2-name" class="font-chrome text-2xl md:text-4xl text-white mb-3 md:mb-4 group-hover:text-chrome transition-all" data-key="proj2-name">Bloglarim</h3>
-                    <p id="proj2-desc" class="text-sm text-gray-400 leading-relaxed" data-key="proj2-desc">A collection of original articles on web security.</p>
+                    <!-- Project name relies on JS translation -->
+                    <h3 id="proj2-name" class="font-chrome text-3xl md:text-4xl text-white mb-4 group-hover:text-chrome" data-key="proj2-name">Bloglarim</h3>
+                    <!-- Project description will be filled by JS -->
+                    <p id="proj2-desc" class="text-sm text-gray-400" data-key="proj2-desc">A collection of original articles on web security and penetration testing.</p>
                 </a>
+                <!-- End of Project 2 -->
             </div>
         </section>
 
-        <!-- CERTIFICATIONS SECTION -->
-        <section id="certifications" class="py-16 md:py-24">
-            <div class="flex items-center justify-between mb-10 md:mb-16 reveal">
-                <span id="certs-title" class="font-chrome text-lg md:text-xl text-white tracking-wide" data-key="certs-title">CERTIFIED_DEFENSES</span>
-                <div class="h-[1px] bg-white/20 flex-grow mx-4 md:mx-8"></div>
-                <span class="text-xs text-gray-500 font-mono">01 — 05</span>
+        <!-- CERTIFICATIONS (New Section) -->
+        <section id="certifications" class="py-20">
+            <div class="flex items-center justify-between mb-16 reveal">
+                <span id="certs-title" class="font-chrome text-xl text-white" data-key="certs-title">CERTIFIED_DEFENSES</span>
+                <div class="h-[1px] bg-white/20 flex-grow mx-8"></div>
+                <span class="text-xs text-gray-500">01 — 05</span>
             </div>
 
-            <!-- Responsive Grid: 2 cols on mobile, 3 on tablet, 5 on desktop -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                 
-                <!-- Cert 1 -->
-                <div class="card-metal p-4 md:p-6 reveal hoverable group flex flex-col items-center text-center rounded-xl">
-                    <div class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                <!-- Sertifikat 1: EWPTX -->
+                <div class="card-metal p-6 reveal hoverable group flex flex-col items-center text-center">
+                    <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                         <!-- LOGO LOCATION: File path is here. PLEASE CHANGE. -->
+                        <img src="ewptx.svg" alt="eWPTX Logo" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="font-chrome text-xs md:text-sm text-white mb-2">eWPTX</h3>
-                    <p class="text-[9px] md:text-[10px] text-gray-500 group-hover:text-gray-300 uppercase leading-tight transition-colors" data-key="cert1-desc">Advanced Web Pentest</p>
+                    <h3 class="font-chrome text-sm text-white mb-1">eWPTX</h3>
+                    <p class="text-[10px] text-gray-400 uppercase" data-key="cert1-desc">Qabaqcıl veb pentest sertifikatı</p>
                 </div>
 
-                <!-- Cert 2 -->
-                <div class="card-metal p-4 md:p-6 reveal hoverable group flex flex-col items-center text-center rounded-xl" style="transition-delay: 0.1s">
-                    <div class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <!-- Sertifikat 2: ECCPT -->
+                <div class="card-metal p-6 reveal hoverable group flex flex-col items-center text-center" style="transition-delay: 0.1s">
+                    <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                        <!-- LOGO LOCATION: File path is here. PLEASE CHANGE. -->
+                        <img src="ecppt.svg" alt="eCCPT Logo" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="font-chrome text-xs md:text-sm text-white mb-2">eCCPT</h3>
-                    <p class="text-[9px] md:text-[10px] text-gray-500 group-hover:text-gray-300 uppercase leading-tight transition-colors" data-key="cert2-desc">Professional Pentester</p>
+                    <h3 class="font-chrome text-sm text-white mb-1">eCCPT</h3>
+                    <p class="text-[10px] text-gray-400 uppercase" data-key="cert2-desc">Peşəkar kiberhücum ekspert sertifikatı</p>
                 </div>
 
-                <!-- Cert 3 -->
-                <div class="card-metal p-4 md:p-6 reveal hoverable group flex flex-col items-center text-center rounded-xl" style="transition-delay: 0.2s">
-                    <div class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                <!-- Sertifikat 3: EJPT -->
+                <div class="card-metal p-6 reveal hoverable group flex flex-col items-center text-center" style="transition-delay: 0.2s">
+                    <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                        <!-- LOGO LOCATION: File path is here. PLEASE CHANGE. -->
+                        <img src="ejpt.svg" alt="eJPT Logo" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="font-chrome text-xs md:text-sm text-white mb-2">eJPT</h3>
-                    <p class="text-[9px] md:text-[10px] text-gray-500 group-hover:text-gray-300 uppercase leading-tight transition-colors" data-key="cert3-desc">Junior Pentester</p>
+                    <h3 class="font-chrome text-sm text-white mb-1">eJPT</h3>
+                    <p class="text-[10px] text-gray-400 uppercase" data-key="cert3-desc">Əsas səviyyə pentest sertifikatı</p>
                 </div>
                 
-                <!-- Cert 4 -->
-                <div class="card-metal p-4 md:p-6 reveal hoverable group flex flex-col items-center text-center rounded-xl" style="transition-delay: 0.3s">
-                    <div class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <!-- Sertifikat 4: PT1 -->
+                <div class="card-metal p-6 reveal hoverable group flex flex-col items-center text-center" style="transition-delay: 0.3s">
+                    <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                        <!-- LOGO LOCATION: File path is here. PLEASE CHANGE. -->
+                        <img src="PT1.png" alt="PT1 Logo" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="font-chrome text-xs md:text-sm text-white mb-2">PT1</h3>
-                    <p class="text-[9px] md:text-[10px] text-gray-500 group-hover:text-gray-300 uppercase leading-tight transition-colors" data-key="cert4-desc">Practical Starter</p>
+                    <h3 class="font-chrome text-sm text-white mb-1">PT1</h3>
+                    <p class="text-[10px] text-gray-400 uppercase" data-key="cert4-desc">Praktiki başlanğıc pentest sertifikatı</p>
                 </div>
                 
-                <!-- Cert 5 -->
-                <div class="card-metal p-4 md:p-6 reveal hoverable group flex flex-col items-center text-center col-span-2 md:col-span-1 rounded-xl" style="transition-delay: 0.4s">
-                    <div class="w-10 h-10 md:w-12 md:h-12 mb-3 md:mb-4 flex items-center justify-center text-2xl text-white/30 font-chrome">
+                <!-- Sertifikat 5: Placeholder for layout -->
+                <div class="card-metal p-6 reveal hoverable group flex flex-col items-center text-center" style="transition-delay: 0.4s">
+                    <div class="w-12 h-12 mb-3 flex items-center justify-center text-2xl text-white/50">
                         ?
                     </div>
-                    <h3 class="font-chrome text-xs md:text-sm text-white mb-2">Next</h3>
-                    <p class="text-[9px] md:text-[10px] text-gray-500 uppercase leading-tight" data-key="cert5-desc">Loading...</p>
+                    <h3 class="font-chrome text-sm text-white mb-1">Soon</h3>
+                    <p class="text-[10px] text-gray-400 uppercase" data-key="cert5-desc">Yaxında yeni sertifikatlar</p>
                 </div>
+                
             </div>
         </section>
+        <!-- END OF CERTIFICATIONS -->
+
 
         <!-- FOOTER -->
-        <section id="contact" class="pt-20 pb-28 md:pb-12 text-center reveal">
-            <h2 id="footer-title" class="font-chrome text-3xl md:text-6xl text-white mb-8 md:mb-12 tracking-tighter" data-key="footer-title">Forging Security</h2>
-            
-            <a href="mailto:zaurgsynv@gmail.com" class="inline-block text-gray-400 hover:text-white border-b border-gray-800 hover:border-white transition-all pb-1 mb-12 md:mb-16 text-sm md:text-lg hoverable">
+        <section id="contact" class="pt-32 pb-12 text-center reveal">
+            <h2 id="footer-title" class="font-chrome text-4xl md:text-6xl text-white mb-8" data-key="footer-title">Forging Security</h2>
+            <a href="mailto:zaurgsynv@gmail.com" class="inline-block text-gray-400 hover:text-white border-b border-gray-700 hover:border-white transition-all pb-1 mb-16 text-lg hoverable">
                 zaurgsynv@gmail.com
             </a>
 
-            <div class="flex justify-center gap-8 md:gap-12 text-[10px] uppercase tracking-[0.2em] text-gray-600">
+            <!-- LINKS UPDATED: LINKEDIN AND MEDIUM ONLY -->
+            <div class="flex justify-center gap-8 text-[10px] uppercase tracking-[0.2em] text-gray-500">
                 <a href="https://www.linkedin.com/in/zaur-guseinov-19073a29b/" class="hover:text-white transition-colors hoverable" target="_blank">LinkedIn</a>
                 <a href="https://medium.com/@huseynovzaur494" class="hover:text-white transition-colors hoverable" target="_blank">Medium</a>
-            </div>
-            
-            <div class="mt-12 text-[9px] text-gray-800 uppercase tracking-widest">
-                &copy; 2024 Zaur Huseynov
             </div>
         </section>
 
     </main>
 
-    <!-- UI CONTROLS (Fixed Position) -->
-    
-    <!-- Music Player: Adjusted for mobile to be less intrusive -->
-    <div class="fixed bottom-4 left-4 md:bottom-10 md:left-10 z-50 group hoverable scale-90 md:scale-100 origin-bottom-left">
-        <div id="musicPlayer" class="card-metal pl-3 pr-5 py-2 rounded-full flex items-center gap-3 md:gap-4 cursor-pointer bg-black/60 hover:bg-white/10 transition-colors">
+    <!-- MUSIC PLAYER (Bottom Left) -->
+    <div class="fixed bottom-10 left-10 z-50 group hoverable">
+        <div id="musicPlayer" class="card-metal pl-3 pr-5 py-2 rounded-full flex items-center gap-4 cursor-pointer hover:bg-white/5 transition-colors">
             
-            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 group-hover:border-white/30 transition-colors">
-                <svg id="playIcon" class="w-3 h-3 md:w-4 md:h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg id="pauseIcon" class="w-3 h-3 md:w-4 md:h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <!-- Play/Pause Icon Container -->
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 group-hover:border-white/30 transition-colors">
+                <svg id="playIcon" class="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="pauseIcon" class="w-4 h-4 text-white hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </div>
 
+            <!-- Track Info -->
             <div class="flex flex-col">
-                <span id="audio-label" class="text-[8px] md:text-[9px] font-bold tracking-widest text-gray-500 uppercase" data-key="audio-label">System Audio</span>
-                <span class="text-[10px] md:text-xs font-chrome text-white tracking-widest truncate max-w-[100px] md:max-w-none">Xpert - MNML</span>
+                <span id="audio-label" class="text-[9px] font-bold tracking-widest text-gray-500 uppercase" data-key="audio-label">System Audio</span>
+                <span class="text-xs font-chrome text-white tracking-widest">Xpert - MNML</span>
             </div>
 
-            <div id="visualizer" class="flex items-end gap-[2px] md:gap-[3px] h-3 md:h-4 ml-2 paused">
+            <!-- Visualizer Bars -->
+            <div id="visualizer" class="flex items-end gap-[3px] h-4 ml-2 paused">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -408,25 +449,25 @@
             </div>
         </div>
         
+        <!-- Audio Element (Sample Cyberpunk/Tech Track) -->
         <audio id="audioSource" loop>
             <source src="/Xpert — MNML.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- Drawing FAB: Adjusted for mobile -->
-    <div class="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-50 flex flex-col items-end gap-3 scale-90 md:scale-100 origin-bottom-right">
-        <button id="drawToggle" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-300 hoverable shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <svg id="iconPen" class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-            <svg id="iconClose" class="w-5 h-5 md:w-6 md:h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <!-- INTERACTION FAB (Bottom Right) -->
+    <div class="fixed bottom-10 right-10 z-50 flex flex-col items-end gap-3">
+        <button id="drawToggle" class="w-16 h-16 rounded-full bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all duration-300 hoverable group">
+            <svg id="iconPen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+            <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <button id="clearBtn" class="bg-black/90 backdrop-blur text-white text-[9px] md:text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/10 hidden hover:bg-red-900/50 hover:border-red-500 transition-colors shadow-lg" data-key="reset-metal">
+        <button id="clearBtn" class="bg-black/80 backdrop-blur text-white text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/10 hidden hover:bg-red-900/50 hover:border-red-500 transition-colors" data-key="reset-metal">
             Reset Metal
         </button>
     </div>
 
     <script>
-        // --- TRANSLATION DATA (FIXED SYNTAX ERROR) ---
-        // Solved: Used Backticks (`) for strings containing HTML to avoid syntax errors.
+        // --- TRANSLATION DATA ---
         const translations = {
             'nav-subtitle': {
                 ru: 'Пентестер',
@@ -444,19 +485,22 @@
                 ru: 'Контакты',
                 en: 'Contact'
             },
+            // HERO TEXT (QUOTE ONLY)
             'hero-text': {
-                // FIXED: Used template literals
-                ru: `Первое правило Бойцовского клуба: не говорить о Бойцовском клубе. <span class="text-white block mt-2 opacity-60 text-sm">— Бойцовский клуб</span>`,
-                en: `The first rule of Fight Club is: You do not talk about Fight Club. <span class="text-white block mt-2 opacity-60 text-sm">— Fight Club</span>`
+                ru: "Первое правило Бойцовского клуба: не говорить о Бойцовском клубе." <span class="text-white">— Бойцовский клуб</span>,
+                en: "The first rule of Fight Club is: You do not talk about Fight Club." <span class="text-white">— Fight Club</span>
             },
             'work-title': {
                 ru: 'РАЗВЕРНУТЫЕ_РЕШЕНИЯ',
                 en: 'DEPLOYED_SOLUTIONS'
             },
+            // Project Descriptions 
             'proj1-desc': {
+                // Osinera Description
                 ru: 'Со-основанная мной компания по Web Development / Web Design.',
                 en: 'Web Development / Web Design company which I co-founded.'
             },
+            // NEW BLOG PROJECT TRANSLATIONS
             'proj2-name': {
                 ru: 'БЛОГИ',
                 en: 'BLOG POSTS'
@@ -465,40 +509,54 @@
                 ru: 'Подборка авторских статей о веб-безопасности и тестировании на проникновение.',
                 en: 'A collection of original articles on web security and penetration testing.'
             },
+            'proj3-desc': {
+                ru: 'Инфраструктура шифрования государственных данных.',
+                en: 'Government data encryption infrastructure.'
+            },
+            'proj4-desc': {
+                ru: 'Транsformasiya arhitektura korporativ şəbəkə.',
+                en: 'Enterprise network architecture transformation.'
+            },
+            'proj5-desc': {
+                ru: 'Симуляция угроз повышенной сложности (Red Team).',
+                en: 'Advanced threat simulation (Red Team).'
+            },
+            // CERTIFICATES BLOCK
             'certs-title': {
-                ru: 'СЕРТИФИКАЦИЯ',
+                ru: 'ДОКУМЕНТИРОВАННЫЙ_АНАЛИЗ',
                 en: 'CERTIFIED_DEFENSES'
             },
             'cert1-desc': {
-                ru: 'Продвинутый веб-пентест',
-                en: 'Advanced web pentest'
+                ru: 'Продвинутый веб-пентест сертификат',
+                en: 'Advanced web penetration certification'
             },
             'cert2-desc': {
-                ru: 'Эксперт по пентесту',
-                en: 'Professional pentester'
+                ru: 'Сертификат эксперта по пентесту',
+                en: 'Certified professional penetration tester'
             },
             'cert3-desc': {
-                ru: 'Базовый пентест',
-                en: 'Junior pentester'
+                ru: 'Базовый сертификат по пентесту',
+                en: 'Junior penetration tester certification'
             },
             'cert4-desc': {
-                ru: 'Практический пентест',
-                en: 'Practical starter'
+                ru: 'Практический начальный пентест сертификат',
+                en: 'Practical beginner pentest certification'
             },
             'cert5-desc': {
-                ru: 'Скоро',
-                en: 'Coming Soon'
+                ru: 'Яхында йени сертификатлар', // Azerbaijani placeholder text
+                en: 'New certifications coming soon'
             },
+            // Footer & Misc
             'footer-title': {
                 ru: 'КОВКА БЕЗОПАСНОСТИ',
                 en: 'FORGING SECURITY'
             },
             'audio-label': {
-                ru: 'АУДИО',
+                ru: 'СИСТЕМНОЕ АУДИО',
                 en: 'SYSTEM AUDIO'
             },
             'reset-metal': {
-                ru: 'Сброс',
+                ru: 'Сбросить Металл',
                 en: 'Reset Metal'
             },
         };
@@ -510,6 +568,7 @@
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[key] && translations[key][lang]) {
+                    // Check if the content contains HTML (like hero-text)
                     if (key === 'hero-text') {
                         el.innerHTML = translations[key][lang];
                     } else {
@@ -518,37 +577,37 @@
                 }
             });
             
-            // Handle specific cases
-            const proj2Name = document.getElementById('proj2-name');
-            if(proj2Name) {
-                 if (lang === 'ru') proj2Name.textContent = translations['proj2-name'].ru;
-                 else proj2Name.textContent = translations['proj2-name'].en;
+            // Handle specific cases for hardcoded titles in the absence of full translation support for all titles
+            if (lang === 'ru') {
+                document.getElementById('proj2-name').textContent = 'Блоглар'; // Fallback for the new project name in RU
+            } else if (lang === 'en') {
+                document.getElementById('proj2-name').textContent = 'Blog Posts'; // Fallback for the new project name in EN
             }
             
-            // Update buttons
-            document.querySelectorAll('.hoverable[data-lang]').forEach(btn => {
-                const btnLang = btn.getAttribute('data-lang');
-                if (btnLang === lang) {
-                    btn.classList.add('text-white', 'bg-white/10');
-                    btn.classList.remove('text-gray-500');
-                } else {
-                    btn.classList.remove('text-white', 'bg-white/10');
-                    btn.classList.add('text-gray-500');
+            // Update lang switcher buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
                 }
             });
         }
 
         // --- LANGUAGE SWITCHER LOGIC ---
         document.getElementById('lang-switcher').addEventListener('click', (e) => {
-            if (e.target.getAttribute('data-lang')) {
+            if (e.target.classList.contains('lang-btn')) {
                 const newLang = e.target.getAttribute('data-lang');
                 setLanguage(newLang);
             }
         });
 
-        // Initialize Language
+        // Set initial language to ENGLISH on load
+        // NOTE: The initial description in HTML for Osinera uses Azerbaijani, but setting EN here will overwrite it correctly.
         setLanguage('en');
 
+
+        // --- REST OF THE SCRIPTS (Unchanged) ---
+        
         // --- MUSIC PLAYER LOGIC ---
         const musicPlayer = document.getElementById('musicPlayer');
         const audioSource = document.getElementById('audioSource');
@@ -566,7 +625,7 @@
                 visualizer.classList.remove('playing');
                 visualizer.classList.add('paused');
             } else {
-                audioSource.play().catch(e => console.log("Audio play blocked strictly by browser policy"));
+                audioSource.play();
                 playIcon.classList.add('hidden');
                 pauseIcon.classList.remove('hidden');
                 visualizer.classList.add('playing');
@@ -577,20 +636,17 @@
 
         // --- CUSTOM CURSOR ---
         const cursor = document.getElementById('cursor');
-        // Only run cursor logic on desktop to save performance
-        if (window.matchMedia("(pointer: fine)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                });
-            });
+        const hoverables = document.querySelectorAll('.hoverable');
 
-            document.querySelectorAll('.hoverable').forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-            });
-        }
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
 
         // --- DRAWING LOGIC (MOLTEN SILVER) ---
         const canvas = document.getElementById('canvas');
@@ -607,11 +663,12 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
+            // Silver Metal Style
             ctx.lineJoin = "round";
             ctx.lineCap = "round";
-            ctx.lineWidth = window.innerWidth < 768 ? 4 : 6; // Thinner on mobile
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = "rgba(255, 255, 255, 0.6)";
+            ctx.lineWidth = 6;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
             ctx.strokeStyle = "#e0e0e0"; 
         }
         window.addEventListener('resize', resizeCanvas);
@@ -653,7 +710,6 @@
             
             let clientX, clientY;
             if(e.type.includes('touch')) {
-                // e.preventDefault(); // Moved to CSS touch-action for better performance
                 clientX = e.touches[0].clientX;
                 clientY = e.touches[0].clientY;
             } else {
@@ -662,12 +718,8 @@
             }
 
             // Draw with "Metallic" feel
-            const gradient = ctx.createLinearGradient(clientX - 10, clientY - 10, clientX + 10, clientY + 10);
-            gradient.addColorStop(0, '#ffffff');
-            gradient.addColorStop(0.5, '#a0a0a0');
-            gradient.addColorStop(1, '#ffffff');
-            
-            ctx.strokeStyle = gradient;
+            ctx.strokeStyle = "#ffffff";
+            ctx.lineWidth = 4;
             ctx.lineTo(clientX, clientY);
             ctx.stroke();
             
@@ -679,10 +731,8 @@
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', stopDrawing);
         
-        // Passive false is important for performance, but we need to stop scroll
-        // CSS touch-action: none handles the scroll locking now.
-        canvas.addEventListener('touchstart', startDrawing, { passive: false });
-        canvas.addEventListener('touchmove', draw, { passive: false });
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e); });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
         canvas.addEventListener('touchend', stopDrawing);
 
         // --- SCROLL ANIMATION ---
